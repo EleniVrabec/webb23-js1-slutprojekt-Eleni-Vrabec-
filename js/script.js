@@ -168,10 +168,10 @@ function handleWeatherForecastSubmission(event){
     event.preventDefault();
     const hours = document.getElementById("hours").value;
     //convert a value from html element to integer 
-    const selectedHours = parseInt(hours, 10); 
+    const selectedHours = parseInt(hours/3); 
     console.log("Input hours:", hours);
     console.log("Parsed hours:", selectedHours);
-    const forecastInterval = Math.ceil(selectedHours / 3); 
+    const forecastInterval = Math.ceil(selectedHours); 
 
     fetchProlongedForecast(currentWeatherData.coord.lat, currentWeatherData.coord.lon, selectedHours, forecastInterval);
 }
