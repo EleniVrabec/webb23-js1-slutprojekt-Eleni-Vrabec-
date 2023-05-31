@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Channel</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+</head> 
+
+<body>
+ 
+    <div id="container">
+        
+    <div id="main"> 
+        <!-- ------------------------- the search input and button ----------------------->
+        <div class="input">
+             <form id="city">
+                    <input class="write-city" type="text" placeholder="Write your city: ">
+                    <button>Select</button>
+             </form>
+        </div>
+
+        <!---------------------------- container with icon ---------------------------------------->
+        <div class="img-icon">
+            <img src="" alt="" class="weather-icon">
+       </div>
+
+        <!------------------------------ container with the error message ------------------------------->
+        <div class="error">
+             <h2 class="error-mess"></h2>
+        </div>
+
+        <!------------------------------------- container with rubrik the city name ----------------------------->
+        <div class="rubrik">
+            <h1 class="city-name"></h1>
+        </div>
+
+        <!------------------------------------- container with the current temp --------------------------->
+        <div class="current-temp">
+            <h1 class="temp"></h1>
+        </div>
+
+        <!------------------------------ extra explanation of the weather ------------- -->
+        <div class="beskrivning">
+            <p class="explain"></p>
+            <p class="full-desc"></p>
+        </div>
+
+        
+
+        <!---------------------------- extra gadgets ------------------------------->
+        <div class="extra-gadgets">
+             <p class="wind-speed">Wind</p>
+             <p class="humidity">Humidity</p>
+             <p class="feels-like">Feels like</p>
+    
+        </div>
+   
+
+    <div id="container-2">
+
+        <!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-- ---------------------------------------------DEL TWO - show weather hourly --------------------------------------------------------------------------->
+        <div class="number-of-days">
+             <h2 class="add-days">Weather forcast</h2>
+             <form id="weather-forcast">
+                 <label class="time" for="hours"> </label>
+                 <input type="number" id="hours" min="1" max="24" placeholder="Choose time:" value="">
+                 <button type="submit" class="show-prognos">Get Forecast</button>
+            </form>
+        <div id="weatherForecast"></div>
+       
+  </div>
+
+</div>
+</div>
+</div>
+ 
+</body>
+</html>
