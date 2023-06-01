@@ -180,7 +180,7 @@ body {
 }
 
 .wind-speed{
-  background-image: url(../img/wind.png);
+  background-image: url(../img/3.png);
   background-position-y: center;
   background-position: left;
   background-repeat: no-repeat;
@@ -188,7 +188,7 @@ body {
   margin: 5px;
 }
 .humidity{
-  background-image: url(../img/humidity.png);
+  background-image: url(../img/2.png);
   background-position-y: center;
   background-position: left;
   background-repeat: no-repeat;
@@ -197,7 +197,7 @@ body {
 }
 
 .feels-like{
-  background-image: url(../img/temp.png);
+  background-image: url(../img/4.png);
   background-position-y: center;
   background-position: left;
   background-repeat: no-repeat;
