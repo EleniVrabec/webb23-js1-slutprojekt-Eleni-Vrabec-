@@ -16,6 +16,13 @@
 </head> 
 
 <body>
+
+    <!------------------------------ the hiden header containing the error message ------------------------------->
+     <header>
+    <div class="error">
+        <h2 class="error-mess"></h2>
+    </div>
+    </header>
  
     <div id="container">
         
@@ -33,11 +40,7 @@
             <img src="" alt="" class="weather-icon">
        </div>
 
-        <!------------------------------ container with the error message ------------------------------->
-        <div class="error">
-             <h2 class="error-mess"></h2>
-        </div>
-
+       
         <!------------------------------------- container with rubrik the city name ----------------------------->
         <div class="rubrik">
             <h1 class="city-name"></h1>
@@ -72,7 +75,6 @@
         <div class="number-of-days">
              <h2 class="add-days">Weather forcast</h2>
              <form id="weather-forcast">
-                 <label class="time" for="hours"> </label>
                  <input type="number" id="hours" min="1" max="24" placeholder="Choose time:" value="">
                  <button type="submit" class="show-prognos">Get Forecast</button>
             </form>
