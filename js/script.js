@@ -40,7 +40,6 @@ function searchCity(event){
     const city = inputSearchCity.value;
     const limit = 1;
     console.log(inputSearchCity.value);
-    form.reset();
 
     //url for the API request to fetch geographical data of city
     const cityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${limit}&appid=${API_KEY}`;
@@ -57,7 +56,7 @@ function searchCity(event){
 
             //if city is found call this functions and pass the coordinates as arguments
             fetchWeatherData(lat, lon);
-            fetchProlongedForecast(lat, lon, hours);
+            fetchProlongedForecast(lat, lon);
            
            
         }else{
@@ -68,6 +67,7 @@ function searchCity(event){
     .catch(error => {
         console.log("Error", error.message);
         errorMessP.innerText = error.message;
+      
         
         setTimeout(function(){
             restart();
@@ -76,7 +76,6 @@ function searchCity(event){
         
 
     });
-    form.reset();
 
 }
 
@@ -100,7 +99,7 @@ function fetchWeatherData(lat, lon){
         console.log("Weather data:", currentWeatherData);
         nameH1.innerText = currentWeatherData.name;
         nameH1.style.color="white";
-        tempH1.innerText =Math.round(currentWeatherData.main.temp) + " °C";
+        tempH1.innerText = Math.round(currentWeatherData.main.temp) + " °C";
         tempH1.style.color="orange";
         descriptionMainP.innerText = currentWeatherData.weather[0].main;
         descriptionMainP.style.color="white";
@@ -128,6 +127,7 @@ function fetchWeatherData(lat, lon){
     .catch(error => {
         console.log("Error", error);
         errorMessP.innerText = error.message;
+      
     });
 
 }   
@@ -144,7 +144,7 @@ function setContainerBackgroundColor() {
         containerDiv.style.backgroundColor = "hsla(10, 70%, 70%, 0.8)";
         containerDiv.style.backdropFilter = "blur(10px)";
         containerDiv.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.2)";
-      } else if (temperature <= 0) {
+      } else if (temperature < 5) {
         containerDiv.style.backgroundColor = "hsla(210, 50%, 80%, 0.8)";
         containerDiv.style.backdropFilter = "blur(10px)";
         containerDiv.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.2)";
@@ -160,25 +160,12 @@ function setContainerBackgroundColor() {
 
 /* ===================================================================================================================================================================== */
 
-//============== retrieve prolonged weather forecast by lat, lon, hours =============//
-const weatherForecastForm = document.querySelector("#weather-forcast") ;
-weatherForecastForm.addEventListener("submit",  handleWeatherForecastSubmission)
-
-function handleWeatherForecastSubmission(event){
-    event.preventDefault();
-    const hours = document.getElementById("hours").value;
-    //convert a value from html element to integer 
-    const selectedHours = parseInt(hours/3); 
-    console.log("Input hours:", hours);
-    console.log("Parsed hours:", selectedHours);
-    const forecastInterval = Math.ceil(selectedHours); 
-
-    fetchProlongedForecast(currentWeatherData.coord.lat, currentWeatherData.coord.lon, selectedHours, forecastInterval);
-}
-
 // =================== function for fetching the prolonged forecast data
-function fetchProlongedForecast(lat, lon, hours, forecastInterval){
-    
+function fetchProlongedForecast(lat, lon){
+    const hourele = document.querySelector("#hours");
+    console.log("================Input hours:", hourele);
+    const hours = hourele.value;
+    console.log("================Input hours:", hours);
     const apiURl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&cnt=${hours}&units=metric`
     console.log("API URL: " + apiURl);
 
@@ -187,26 +174,30 @@ function fetchProlongedForecast(lat, lon, hours, forecastInterval){
         return response.json();
     })
     .then(function(data){
-        // calling the function and passing the data and hours as arguments
-        displayWeatherForecast(data, hours); 
+        displayWeatherForecast(data); 
     })
     .catch(function(error){
         console.log("Ett fel inträffades" + error);
     })
-    form.reset();
+  
 }
 
 // ======================== display the prolonged data =======================
-function displayWeatherForecast(data, hours){
+function displayWeatherForecast(data){
     const forecastDiv = document.getElementById("weatherForecast");
     forecastDiv.innerHTML = "";
-    
-    for(let i = 0; i < hours; i ++){
+    const hours = document.querySelector("#hours").value;
+    //convert a value from html element to integer 
+    const selectedHours = parseInt(hours/3); 
+    console.log("Input hours:", hours);
+    console.log("Parsed hours:", selectedHours);
+    const forecastInterval = Math.ceil(selectedHours); 
+
+    for(let i = 0; i < forecastInterval; i ++){
         let forecast = data.list[i];
         let forecastTime = forecast.dt_txt;
         let forecastIcon = forecast.weather[0].icon;
-        let forcastTemperature = forecast.main.temp;
-
+        let forcastTemperature = Math.round(forecast.main.temp);  
         let forecastItem = document.createElement("p");
         let weatherIcon = document.createElement("img");
         forecastItem.innerHTML = `${forecastTime}: ${forcastTemperature}&deg;C`;
@@ -230,4 +221,6 @@ function displayWeatherForecast(data, hours){
         forecastItem.style.backgroundColor="#536976";
         
     }
+
+    form.reset();
 }

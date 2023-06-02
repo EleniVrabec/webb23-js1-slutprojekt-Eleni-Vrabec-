@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Channel</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/script.js" defer></script>
+    <!-- <script src="./js/script.js" defer></script> -->
+     <script src="./js/test.js" defer></script> 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
@@ -16,21 +17,23 @@
 </head> 
 
 <body>
-
-    <!------------------------------ the hiden header containing the error message ------------------------------->
-     <header>
-    <div class="error">
+    <video id="video-background" autoplay loop muted>
+        <source src="img/video1.mp4" type="video/mp4">
+    </video>
+      
+    <header><div class="error">
         <h2 class="error-mess"></h2>
-    </div>
-    </header>
+   </div></header>
  
     <div id="container">
+        
         
     <div id="main"> 
         <!-- ------------------------- the search input and button ----------------------->
         <div class="input">
              <form id="city">
                     <input class="write-city" type="text" placeholder="Write your city: ">
+                    <input type="number" id="hours" min="1" max="24" placeholder="Choose time:" value="">
                     <button>Select</button>
              </form>
         </div>
@@ -40,7 +43,9 @@
             <img src="" alt="" class="weather-icon">
        </div>
 
-       
+        <!------------------------------ container with the error message ------------------------------->
+        
+
         <!------------------------------------- container with rubrik the city name ----------------------------->
         <div class="rubrik">
             <h1 class="city-name"></h1>
@@ -71,14 +76,10 @@
     <div id="container-2">
 
         <!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
-        <!-- ---------------------------------------------DEL TWO - show weather hourly --------------------------------------------------------------------------->
+        <!-- --------------------------------------------- show weather hourly --------------------------------------------------------------------------->
         <div class="number-of-days">
-             <h2 class="add-days">Weather forcast</h2>
-             <form id="weather-forcast">
-                 <input type="number" id="hours" min="1" max="24" placeholder="Choose time:" value="">
-                 <button type="submit" class="show-prognos">Get Forecast</button>
-            </form>
-        <div id="weatherForecast"></div>
+             <h2 class="add-days">Weather forcast</h2>     
+             <div id="weatherForecast"></div>
        
   </div>
 
