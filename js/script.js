@@ -205,20 +205,21 @@ function displayWeatherForecast(data){
 
         const iconURL = `https://openweathermap.org/img/wn/${forecastIcon}.png`;
         weatherIcon.src = iconURL;
-        weatherIcon.style.width="100px";
-        weatherIcon.style.height="100px";
+        weatherIcon.style.width="90px";
+        weatherIcon.style.height="90px";
         forecastItem.prepend(weatherIcon);
         forecastDiv.appendChild(forecastItem);
         forecastItem.style.margin="5px";
         forecastItem.style.borderRadius= "15px"
         forecastItem.style.width = "100px";
         forecastItem.style.float = "left";
-        forecastItem.style.border = "1 px solid black";
+        forecastItem.style.border = "1 px solid white";
         forecastItem.style.justifyContent="centar";
         forecastItem.style.padding="5px";
         forecastItem.style.display="collumn";
         forecastItem.style.color="white";
-        forecastItem.style.backgroundColor="#536976";
+        /* forecastItem.style.backgroundColor="#536976"; */
+        forecastItem.style.backgroundColor="transparent";
         
     }
 
